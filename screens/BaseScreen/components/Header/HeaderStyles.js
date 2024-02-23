@@ -13,14 +13,15 @@ export const styles = StyleSheet.create({
   },
 
   header: {
-    color: "white",
-    fontSize: moderateScale(50),
-    fontWeight: "bold",
+    color: "#CCD6F6",
+    fontSize: moderateScale(55),
+    fontFamily: "JetBrainsMono",
   },
 
   subHeaderRoot: {
     fontSize: moderateScale(18),
     color: "#468006",
+    fontFamily: "JetBrainsMono",
   },
 
   terminalWrapper: {
@@ -30,10 +31,12 @@ export const styles = StyleSheet.create({
   subHeaderUser: {
     fontSize: moderateScale(18),
     color: "#3162A2",
+    fontFamily: "JetBrainsMono",
   },
 
   subHeaderSeparation: {
     fontSize: moderateScale(18),
     color: "white",
+    fontFamily: "JetBrainsMono",
   },
 });
