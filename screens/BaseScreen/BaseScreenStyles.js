@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     alignItems: "center",
-    marginTop: horizontalScale(50),
+    paddingTop: horizontalScale(50),
+    backgroundColor: "#0E0E10",
   },
 });
