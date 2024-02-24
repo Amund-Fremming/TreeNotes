@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 import {
   horizontalScale,
   moderateScale,
@@ -17,15 +17,17 @@ export default function LightLine({ empty, folder, name }: LightLineProps) {
   const [iconName] = useState(folder ? "folder" : "file-text");
 
   return (
-    <View style={styles.container}>
-      {!empty && <Feather name={iconName} size={35} color={"#CCD6F6"} />}
-      {!empty && (
-        <Text style={styles.name}>
-          {name}
-          {!folder ? ".md" : ""}
-        </Text>
-      )}
-    </View>
+    <Pressable onPress={() => console.log(`Pressed ${name}`)}>
+      <View style={styles.container}>
+        {!empty && <Feather name={iconName} size={35} color={"#CCD6F6"} />}
+        {!empty && (
+          <Text style={styles.name}>
+            {name}
+            {!folder ? ".md" : ""}
+          </Text>
+        )}
+      </View>
+    </Pressable>
   );
 }
 
