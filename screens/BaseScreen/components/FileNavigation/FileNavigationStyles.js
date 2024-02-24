@@ -1,21 +1,32 @@
 import { StyleSheet } from "react-native";
-import { moderateScale } from "../../../../util/DimentionFunctions";
+import {
+  moderateScale,
+  verticalScale,
+} from "../../../../util/DimentionFunctions";
 
-export default styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "auto",
     justifyContent: "center",
     alignItems: "center",
+    marginTop: verticalScale(50),
   },
 
   boxDisplay: {
     flexDirection: "column",
-    backgroundColor: "#D9D9D9",
-    borderRadius: moderateScale(20),
+    backgroundColor: "rgba(217, 217, 217, 0.1)",
+    borderRadius: moderateScale(15),
     height: "100%",
-    width: "90%",
+    width: "100%",
   },
 
-  lineDisplay: {},
+  header: {
+    fontFamily: "JetBrainsMono",
+    fontSize: moderateScale(20),
+    color: "#64FFDA",
+    paddingTop: verticalScale(20),
+    paddingLeft: verticalScale(80),
+    paddingBottom: verticalScale(2),
+  },
 });

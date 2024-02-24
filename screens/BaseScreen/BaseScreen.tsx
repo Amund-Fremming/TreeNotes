@@ -16,6 +16,7 @@ export default function BaseScreen() {
   const loadFonts = async () => {
     await Font.loadAsync({
       JetBrainsMono: require("../../assets/fonts/JetBrainsMono-ExtraBold.ttf"),
+      JetBrainsMonoLight: require("../../assets/fonts/JetBrainsMono-Light.ttf"),
     });
 
     setFontsLoaded(true);

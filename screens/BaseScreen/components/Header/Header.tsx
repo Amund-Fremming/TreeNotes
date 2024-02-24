@@ -8,8 +8,8 @@ export default function Header() {
       <View style={styles.terminalWrapper}>
         <Text style={styles.subHeaderRoot}>root@tree</Text>
         <Text style={styles.subHeaderSeparation}>:</Text>
-        <Text style={styles.subHeaderUser}> ~/User</Text>
-        <Text style={styles.subHeaderSeparation}> $</Text>
+        <Text style={styles.subHeaderUser}>~/User</Text>
+        <Text style={styles.subHeaderSeparation}>$</Text>
       </View>
     </View>
   );
