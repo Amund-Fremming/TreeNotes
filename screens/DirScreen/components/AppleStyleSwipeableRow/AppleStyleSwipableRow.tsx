@@ -1,12 +1,10 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import { Animated } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import DarkLine from "../DarkLine/DarkLine";
-import LightLine from "../LightLine/LightLine";
+import Line from "../Line/Line";
 import {
-  horizontalScale,
   moderateScale,
   verticalScale,
 } from "../../../../util/DimentionFunctions";
@@ -49,11 +47,12 @@ const AppleStyleSwipableRow = ({ item, index }: Props) => {
 
   return (
     <Swipeable leftThreshold={200} renderLeftActions={renderLeftActions}>
-      {index % 2 !== 0 ? (
-        <DarkLine empty={false} folder={item.folder} name={item.name} />
-      ) : (
-        <LightLine empty={false} folder={item.folder} name={item.name} />
-      )}
+      <Line
+        empty={false}
+        folder={item.folder}
+        name={item.name}
+        light={index % 2 == 0 ? true : false}
+      />
     </Swipeable>
   );
 };

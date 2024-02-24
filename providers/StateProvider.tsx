@@ -6,7 +6,7 @@ import {
   SetStateAction,
   ReactNode,
 } from "react";
-import { TreeNode, Note } from "../data/TreeNode";
+import { TreeNode, Note } from "../data/Tree";
 
 interface IStateContext {
   state: string;
