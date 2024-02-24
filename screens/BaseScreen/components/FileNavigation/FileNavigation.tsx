@@ -1,9 +1,7 @@
 import React from "react";
 import { View, Text, FlatList } from "react-native";
 import { styles } from "./FileNavigationStyles";
-import LightLine from "./components/LightLine";
-import DarkLine from "./components/DarkLine";
-import AppleStyleSwipableRow from "./components/AppleStyleSwipableRow";
+import AppleStyleSwipableRow from "../AppleStyleSwipeableRow/AppleStyleSwipableRow";
 
 interface file {
   name: string;

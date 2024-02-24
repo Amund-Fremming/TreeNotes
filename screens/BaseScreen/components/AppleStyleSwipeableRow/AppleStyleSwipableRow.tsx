@@ -3,13 +3,13 @@ import React from "react";
 import { Animated } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import DarkLine from "./DarkLine";
-import LightLine from "./LightLine";
+import DarkLine from "../DarkLine/DarkLine";
+import LightLine from "../LightLine/LightLine";
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
-} from "../../../../../util/DimentionFunctions";
+} from "../../../../util/DimentionFunctions";
 
 interface file {
   name: string;
@@ -26,6 +26,7 @@ const AppleStyleSwipableRow = ({ item, index }: Props) => {
     const trans = dragX.interpolate({
       inputRange: [0, 50, 100, 101],
       outputRange: [-20, 0, 0, 1],
+      extrapolate: "clamp",
     });
     return (
       <RectButton
@@ -40,14 +41,14 @@ const AppleStyleSwipableRow = ({ item, index }: Props) => {
             },
           ]}
         >
-          Archive
+          Delete
         </Animated.Text>
       </RectButton>
     );
   };
 
   return (
-    <Swipeable renderLeftActions={renderLeftActions}>
+    <Swipeable leftThreshold={200} renderLeftActions={renderLeftActions}>
       {index % 2 !== 0 ? (
         <DarkLine empty={false} folder={item.folder} name={item.name} />
       ) : (
@@ -62,7 +63,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#DD073A",
     justifyContent: "flex-end",
     paddingBottom: verticalScale(6),
-    padding: moderateScale(4),
+    paddingLeft: moderateScale(15),
+    paddingRight: moderateScale(15),
     zIndex: 10,
     borderRadius: moderateScale(7),
   },
