@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
-import { styles } from "./BaseScreenStyles";
+import { styles } from "./DirScreenStyles";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import FileNavigation from "./components/FileNavigation/FileNavigation";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
 
-export default function BaseScreen() {
+export default function DirScreen() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
-import { styles } from "./NoteScreenStyles";
+import { styles } from "./FileScreenStyles";
 
-export default function NoteScreen() {
+export default function FileScreen() {
   return (
     <View style={styles.container}>
       <Text>Note</Text>
