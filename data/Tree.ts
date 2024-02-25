@@ -1,24 +1,38 @@
-export interface Note {
-  name: string;
-  header: string;
-  note: string;
-}
+import { Note } from "./Note";
+import { TreeNode } from "./TreeNode";
 
-export interface TreeNode {
-  children?: TreeNode[];
-  values: Note[];
-}
-
-class Tree {
+export class Tree {
   root: TreeNode | null;
+  currentNode: TreeNode | null;
 
-  constructor(rootValues: Note[]) {
-    if (rootValues !== undefined || rootValues !== null) {
-      this.root = { values: rootValues, children: [] };
-    } else {
-      this.root = null;
-    }
+  constructor() {
+    this.root = new TreeNode("root");
+    this.root.parentNode = null;
+    this.currentNode = this.root;
   }
 
-  addChild() {}
+  addTreeNodeToCurrentNode(treeNode: TreeNode) {
+    treeNode.parentNode = this.currentNode;
+    this.currentNode.childNodes.push(treeNode);
+  }
+
+  addNoteToCurrentNode(note: Note) {
+    this.currentNode.values.push(note);
+  }
+
+  setCurrentNode(name: string) {
+    const nodes: TreeNode[] = this.currentNode.childNodes.filter(
+      (node) => node.name === name
+    );
+
+    this.currentNode = nodes[0];
+  }
+
+  setCurrentNodeParrentNode() {
+    if (this.currentNode.parentNode !== null) {
+      this.currentNode = this.currentNode.parentNode;
+    }
+
+    console.log("You are currently at the root node!");
+  }
 }
