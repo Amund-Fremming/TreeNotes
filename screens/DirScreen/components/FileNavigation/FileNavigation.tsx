@@ -22,10 +22,14 @@ export default function FileNavigation() {
       name: node.name,
     }));
 
+    console.log("FOLDERS" + folders);
+
     const notes: LineProps[] = tree.currentNode.values.map((note) => ({
       folder: false,
       name: note.name,
     }));
+
+    console.log("NOTES " + notes);
 
     const concatinatedData: LineProps[] = folders.concat(notes);
     setDataArray(concatinatedData);

@@ -2,7 +2,7 @@
 
 ## Bugs
 
-- Når man legger til filer og skal legge til mapper igjen etter, lastes det inn feil icon, se på methoden som converterer objektene til LineProps
+- Når man legger til filer og skal legge til mapper igjen etter, lastes det inn feil icon, se på methoden som converterer objektene til LineProp, er ikke teknisk feil men display
 - Trykker man raskt på create lages det to mapper
 
 ## Implementeres
