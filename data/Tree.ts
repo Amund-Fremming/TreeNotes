@@ -20,6 +20,18 @@ export class Tree {
     this.currentNode.values.push(note);
   }
 
+  removeTreeNodeFromCurrentNode(name: string) {
+    this.currentNode.childNodes = this.currentNode.childNodes.filter(
+      (node) => node.name !== name
+    );
+  }
+
+  removeNoteFromCurrentNode(name: string) {
+    this.currentNode.values = this.currentNode.values.filter(
+      (note) => note.name !== name
+    );
+  }
+
   setCurrentNode(name: string) {
     const nodes: TreeNode[] = this.currentNode.childNodes.filter(
       (node) => node.name === name
