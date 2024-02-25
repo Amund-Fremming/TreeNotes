@@ -6,24 +6,24 @@ import {
   SetStateAction,
   ReactNode,
 } from "react";
-import { TreeNode, Note } from "../data/Tree";
+import { Tree } from "../data/Tree";
 
 interface IStateContext {
   state: string;
   setState: Dispatch<SetStateAction<string>>;
-  currentNote: Note | undefined;
-  setCurrentNote: Dispatch<SetStateAction<Note>> | undefined;
-  currentTreeNode: TreeNode | undefined;
-  setCurrentTreeNode: Dispatch<SetStateAction<TreeNode>> | undefined;
+  tree: Tree | null;
+  setTree: Dispatch<SetStateAction<Tree>>;
+  updateTrigger: boolean;
+  setUpdateTrigger: Dispatch<SetStateAction<boolean>>;
 }
 
 const defaultContextValue: IStateContext = {
   state: "DIR",
   setState: () => {},
-  currentNote: undefined,
-  setCurrentNote: () => {},
-  currentTreeNode: undefined,
-  setCurrentTreeNode: () => {},
+  tree: null,
+  setTree: () => {},
+  updateTrigger: true,
+  setUpdateTrigger: () => {},
 };
 
 const StateContext = createContext<IStateContext>(defaultContextValue);
@@ -32,18 +32,16 @@ export const useStateProvider = () => useContext(StateContext);
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<string>("DIR");
-  const [currentNote, setCurrentNote] = useState<Note | undefined>(undefined);
-  const [currentTreeNode, setCurrentTreeNode] = useState<TreeNode | undefined>(
-    undefined
-  );
+  const [tree, setTree] = useState<Tree | null>(null);
+  const [updateTrigger, setUpdateTrigger] = useState<boolean>(true);
 
   const value = {
     state,
     setState,
-    currentNote,
-    setCurrentNote,
-    currentTreeNode,
-    setCurrentTreeNode,
+    tree,
+    setTree,
+    updateTrigger,
+    setUpdateTrigger,
   };
 
   return (

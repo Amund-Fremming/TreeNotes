@@ -3,18 +3,12 @@ import Feather from "react-native-vector-icons/Feather";
 import { useState } from "react";
 import { styles } from "./LineStyles";
 import { useStateProvider } from "../../../../providers/StateProvider";
-
-interface LineProps {
-  empty: boolean;
-  folder: boolean;
-  name: string;
-  light: boolean;
-}
+import { LineProps } from "../FileNavigation/FileNavigation";
 
 export default function Line({ empty, folder, name, light }: LineProps) {
   const [iconName] = useState(folder ? "folder" : "file-text");
 
-  const { setState, setCurrentNote, setCurrentTreeNode } = useStateProvider();
+  const { setState } = useStateProvider();
 
   const handleDirPressed = () => {
     // TODO

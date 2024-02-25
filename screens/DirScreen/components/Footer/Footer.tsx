@@ -4,31 +4,31 @@ import Feather from "react-native-vector-icons/Feather";
 import { useStateProvider } from "../../../../providers/StateProvider";
 import Dialog from "react-native-dialog";
 import { useState } from "react";
+import { TreeNode } from "../../../../data/TreeNode";
+import { Note } from "../../../../data/Note";
 
 export default function Footer() {
-  const { setState, setCurrentNote } = useStateProvider();
   const [folderDialogVisible, setFolderDialogVisible] = useState(false);
   const [fileDialogVisible, setFileDialogVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  const showFolderDialog = () => setFolderDialogVisible(true);
-  const showFileDialog = () => setFileDialogVisible(true);
+  const { tree, updateTrigger, setUpdateTrigger } = useStateProvider();
+
   const handleAddFolder = () => {
     setFolderDialogVisible(false);
-    // TODO
-    console.log("Folder added!");
-    // Create a new TreeNode
-    // Set the currentNode to this new Node
+    const treeNode: TreeNode = new TreeNode(inputValue);
+    tree.addTreeNodeToCurrentNode(treeNode);
+    setUpdateTrigger(!updateTrigger);
+    setInputValue("");
   };
 
   const handleAddFile = () => {
     setFileDialogVisible(false);
-    setState("FILE");
-    // TODO
-    console.log("File added!");
-    // Create a new Note
-    // Add the Note to this TreeNode
-    // setCurrentNote(x) to this TreeNode value with name
+
+    const note: Note = new Note(inputValue);
+    tree.addNoteToCurrentNode(note);
+    setUpdateTrigger(!updateTrigger);
+    setInputValue("");
   };
 
   const handleCancel = () => {

@@ -8,18 +8,17 @@ import {
   moderateScale,
   verticalScale,
 } from "../../../../util/DimentionFunctions";
+import { LineProps } from "../FileNavigation/FileNavigation";
 
-interface file {
-  name: string;
-  folder: boolean;
-}
-
-interface Props {
-  item: file;
+interface AppleStyleSwipableRowProps extends LineProps {
   index: number;
 }
 
-const AppleStyleSwipableRow = ({ item, index }: Props) => {
+const AppleStyleSwipableRow = ({
+  folder,
+  name,
+  index,
+}: AppleStyleSwipableRowProps) => {
   const renderLeftActions = (progress, dragX) => {
     const trans = dragX.interpolate({
       inputRange: [0, 50, 100, 101],
@@ -29,7 +28,7 @@ const AppleStyleSwipableRow = ({ item, index }: Props) => {
     return (
       <RectButton
         style={styles.leftAction}
-        onPress={() => console.log(`Deleted ${item.name}!`)}
+        onPress={() => console.log(`Deleted ${name}!`)}
       >
         <Animated.Text
           style={[
@@ -49,8 +48,8 @@ const AppleStyleSwipableRow = ({ item, index }: Props) => {
     <Swipeable leftThreshold={200} renderLeftActions={renderLeftActions}>
       <Line
         empty={false}
-        folder={item.folder}
-        name={item.name}
+        folder={folder}
+        name={name}
         light={index % 2 == 0 ? true : false}
       />
     </Swipeable>
