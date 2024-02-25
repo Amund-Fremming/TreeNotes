@@ -24,7 +24,6 @@ export default function Footer() {
 
   const handleAddFile = () => {
     setFileDialogVisible(false);
-
     const note: Note = new Note(inputValue);
     tree.addNoteToCurrentNode(note);
     setUpdateTrigger(!updateTrigger);
