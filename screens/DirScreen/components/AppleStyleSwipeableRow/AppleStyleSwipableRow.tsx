@@ -9,6 +9,7 @@ import {
   verticalScale,
 } from "../../../../util/DimentionFunctions";
 import { LineProps } from "../FileNavigation/FileNavigation";
+import { useStateProvider } from "../../../../providers/StateProvider";
 
 interface AppleStyleSwipableRowProps extends LineProps {
   index: number;
@@ -19,6 +20,21 @@ const AppleStyleSwipableRow = ({
   name,
   index,
 }: AppleStyleSwipableRowProps) => {
+  const { tree, updateTrigger, setUpdateTrigger } = useStateProvider();
+
+  const handleDelete = () => {
+    console.log(`Deleted ${name}!`);
+    if (folder) {
+      tree.removeTreeNodeFromCurrentNode(name);
+    }
+
+    if (!folder) {
+      tree.removeNoteFromCurrentNode(name);
+    }
+
+    setUpdateTrigger(!updateTrigger);
+  };
+
   const renderLeftActions = (progress, dragX) => {
     const trans = dragX.interpolate({
       inputRange: [0, 50, 100, 101],
@@ -26,10 +42,7 @@ const AppleStyleSwipableRow = ({
       extrapolate: "clamp",
     });
     return (
-      <RectButton
-        style={styles.leftAction}
-        onPress={() => console.log(`Deleted ${name}!`)}
-      >
+      <RectButton style={styles.leftAction} onPress={handleDelete}>
         <Animated.Text
           style={[
             styles.actionText,
