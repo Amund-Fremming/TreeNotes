@@ -15,14 +15,20 @@ export default function Footer() {
   const { tree, updateTrigger, setUpdateTrigger } = useStateProvider();
 
   const handleAddFolder = () => {
+    if (!folderDialogVisible) return; // For disabling doble creation of files
+
     setFolderDialogVisible(false);
     const treeNode: TreeNode = new TreeNode(inputValue);
     tree.addTreeNodeToCurrentNode(treeNode);
     setUpdateTrigger(!updateTrigger);
     setInputValue("");
+
+    console.log(treeNode.childNodes);
   };
 
   const handleAddFile = () => {
+    if (!fileDialogVisible) return; // For disabling doble creation of files
+
     setFileDialogVisible(false);
     const note: Note = new Note(inputValue);
     tree.addNoteToCurrentNode(note);
@@ -36,6 +42,11 @@ export default function Footer() {
     setInputValue("");
   };
 
+  const handleBack = () => {
+    tree.setCurrentNodeParrentNode();
+    setUpdateTrigger(!updateTrigger);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.buttonWrapper}>
@@ -44,6 +55,9 @@ export default function Footer() {
         </Pressable>
         <Pressable onPress={() => setFolderDialogVisible(true)}>
           <Feather name="folder-plus" size={55} color={"#CCD6F6"} />
+        </Pressable>
+        <Pressable onPress={handleBack}>
+          <Feather name="corner-down-left" size={55} color={"#CCD6F6"} />
         </Pressable>
       </View>
 

@@ -1,12 +1,8 @@
 # TreeNotes
 
-## Bugs
-
-- Når man legger til filer og skal legge til mapper igjen etter, lastes det inn feil icon, se på methoden som converterer objektene til LineProp, er ikke teknisk feil men display
-- Trykker man raskt på create lages det to mapper
-
 ## Implementeres
 
+- Ikke samme navn på notes!
 - Integrere session data til async localstorage
 - En side for Note
 - Funksjonalitet for Note, redigere, sette bold, sette overskrifter, sette punkter

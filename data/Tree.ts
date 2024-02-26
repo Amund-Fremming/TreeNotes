@@ -43,6 +43,7 @@ export class Tree {
   setCurrentNodeParrentNode() {
     if (this.currentNode.parentNode !== null) {
       this.currentNode = this.currentNode.parentNode;
+      return;
     }
 
     console.log("You are currently at the root node!");

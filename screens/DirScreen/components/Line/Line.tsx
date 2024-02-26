@@ -1,20 +1,18 @@
 import { View, Text, Pressable } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
-import { useState } from "react";
 import { styles } from "./LineStyles";
 import { useStateProvider } from "../../../../providers/StateProvider";
 import { LineProps } from "../FileNavigation/FileNavigation";
 
 export default function Line({ empty, folder, name, light }: LineProps) {
-  const [iconName] = useState(folder ? "folder" : "file-text");
-
-  const { setState } = useStateProvider();
+  const { setState, tree, updateTrigger, setUpdateTrigger } =
+    useStateProvider();
 
   const handleDirPressed = () => {
-    // TODO
     setState("DIR");
-    console.log("Dir pressed");
-    // set current node, this nodes, children with name of this dir
+    tree.setCurrentNode(name);
+    setUpdateTrigger(!updateTrigger);
+    console.log("TREEEE PLACE " + tree.currentNode.name);
   };
 
   const handleFilePressed = () => {
@@ -34,7 +32,13 @@ export default function Line({ empty, folder, name, light }: LineProps) {
   return (
     <Pressable onPress={setHandlerFunction()}>
       <View style={light ? styles.lightContainer : styles.darkContainer}>
-        {!empty && <Feather name={iconName} size={35} color={"#CCD6F6"} />}
+        {!empty && (
+          <Feather
+            name={folder ? "folder" : "file-text"}
+            size={35}
+            color={"#CCD6F6"}
+          />
+        )}
         {!empty && (
           <Text style={styles.name}>
             {name}

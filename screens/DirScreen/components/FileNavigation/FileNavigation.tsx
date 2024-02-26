@@ -17,24 +17,20 @@ export default function FileNavigation() {
   const [dataArray, setDataArray] = useState<LineProps[] | null>(null);
 
   useEffect(() => {
+    console.log("CURRRRR " + tree.currentNode.name);
+
     const folders: LineProps[] = tree.currentNode.childNodes.map((node) => ({
       folder: true,
       name: node.name,
     }));
-
-    console.log("FOLDERS" + folders);
 
     const notes: LineProps[] = tree.currentNode.values.map((note) => ({
       folder: false,
       name: note.name,
     }));
 
-    console.log("NOTES " + notes);
-
     const concatinatedData: LineProps[] = folders.concat(notes);
     setDataArray(concatinatedData);
-
-    console.log("DATA UPDATED!!!!");
   }, [updateTrigger]);
 
   return (
