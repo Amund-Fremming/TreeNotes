@@ -18,10 +18,6 @@ export class Restore {
     node.parentNode = parentNode;
     node.values = [...obj.values];
 
-    if (existingNode) {
-      existingNode.childNodes = [];
-    }
-
     obj.childNodes.forEach((childObj: any) => {
       const childNode = Restore.restoreTreeNodeFromObject(childObj, node);
       node.childNodes.push(childNode);
