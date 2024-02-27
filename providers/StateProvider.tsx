@@ -47,7 +47,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
 
       const serializedTree = tree.serialize();
 
-      await AsyncStorage.setItem("tree", JSON.stringify(serializedTree));
+      await AsyncStorage.setItem("tree", serializedTree);
     } catch (error) {
       console.error("Error while saving to AsyncStorage", error);
     }

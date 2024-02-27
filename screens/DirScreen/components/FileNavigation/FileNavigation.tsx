@@ -16,9 +16,6 @@ export default function FileNavigation() {
   const { tree, updateTrigger } = useStateProvider();
   const [dataArray, setDataArray] = useState<LineProps[] | null>(null);
 
-  console.log("TREE IN NAV");
-  console.log(tree.currentNode.childNodes);
-
   useEffect(() => {
     let folders: LineProps[];
     try {

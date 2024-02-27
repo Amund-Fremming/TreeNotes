@@ -4,6 +4,7 @@ import DirScreen from "./screens/DirScreen/DirScreen";
 import FileScreen from "./screens/FileScreen/FileScreen";
 import { Tree } from "./data/Tree";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Restore } from "./data/Restore";
 
 export default function Router() {
   const { state, setTree } = useStateProvider();
@@ -16,19 +17,13 @@ export default function Router() {
   const fetchDataFromAsyncStorage = async () => {
     const jsonRaw = await AsyncStorage.getItem("tree");
     if (jsonRaw != null) {
-      const parsedData: Tree = await JSON.parse(jsonRaw);
-
-      console.log(parsedData);
-
-      setTree(parsedData);
+      const parsedData = JSON.parse(jsonRaw);
+      const restoredTree = Restore.restoreTreeFromObject(parsedData) as Tree;
+      setTree(restoredTree);
     }
   };
 
   const loadDataFromLocalStorage = async () => {
-    // Check if data in localstorage
-    // Set the tree via provider if exists
-    // If no data, create a new tree
-    /* FOR TESTING:: */
     const tree: Tree = new Tree();
     setTree(tree);
   };
