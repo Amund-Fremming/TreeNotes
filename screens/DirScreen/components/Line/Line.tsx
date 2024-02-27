@@ -12,13 +12,11 @@ export default function Line({ empty, folder, name, light }: LineProps) {
     setState("DIR");
     tree.setCurrentNode(name);
     setUpdateTrigger(!updateTrigger);
-    console.log("TREEEE PLACE " + tree.currentNode.name);
   };
 
   const handleFilePressed = () => {
     // TODO
     setState("FILE");
-    console.log("File pressed");
   };
 
   const setHandlerFunction = () => {

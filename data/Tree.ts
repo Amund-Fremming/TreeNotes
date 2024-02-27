@@ -4,10 +4,12 @@ import { TreeNode } from "./TreeNode";
 export class Tree {
   root: TreeNode | null;
   currentNode: TreeNode | null;
+  path: string;
 
   constructor() {
     this.root = new TreeNode("root");
     this.root.parentNode = null;
+    this.path = "";
     this.currentNode = this.root;
   }
 
@@ -37,15 +39,41 @@ export class Tree {
       (node) => node.name === name
     );
 
+    this.path += `/${name}`;
     this.currentNode = nodes[0];
   }
 
   setCurrentNodeParrentNode() {
     if (this.currentNode.parentNode !== null) {
       this.currentNode = this.currentNode.parentNode;
+      const lastBackslashIndex = this.path.lastIndexOf("/");
+      this.path = this.path.substring(0, lastBackslashIndex);
       return;
     }
+  }
 
-    console.log("You are currently at the root node!");
+  removeParentReferences(node = this.root) {
+    if (!node) return;
+
+    node.childNodes.forEach((child) => {
+      child.parentNode = null;
+      this.removeParentReferences(child);
+    });
+  }
+
+  restoreParentReferences(node = this.root) {
+    if (!node) return;
+
+    node.childNodes.forEach((child) => {
+      child.parentNode = node;
+      this.restoreParentReferences(child);
+    });
+  }
+
+  serialize() {
+    this.removeParentReferences();
+    const serializedTree = JSON.stringify(this.root);
+    this.restoreParentReferences(); // For treet i minnet
+    return serializedTree;
   }
 }

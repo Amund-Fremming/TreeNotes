@@ -7,6 +7,7 @@ import {
   ReactNode,
 } from "react";
 import { Tree } from "../data/Tree";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface IStateContext {
   state: string;
@@ -15,6 +16,7 @@ interface IStateContext {
   setTree: Dispatch<SetStateAction<Tree>>;
   updateTrigger: boolean;
   setUpdateTrigger: Dispatch<SetStateAction<boolean>>;
+  saveDataAsync: () => void;
 }
 
 const defaultContextValue: IStateContext = {
@@ -24,6 +26,7 @@ const defaultContextValue: IStateContext = {
   setTree: () => {},
   updateTrigger: true,
   setUpdateTrigger: () => {},
+  saveDataAsync: () => {},
 };
 
 const StateContext = createContext<IStateContext>(defaultContextValue);
@@ -35,6 +38,21 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [tree, setTree] = useState<Tree | null>(null);
   const [updateTrigger, setUpdateTrigger] = useState<boolean>(true);
 
+  const saveDataAsync = async () => {
+    // TODO - Only save data that is not already saved
+    try {
+      // Fiks denne
+      await AsyncStorage.setItem("test", "test");
+      await AsyncStorage.clear();
+
+      const serializedTree = tree.serialize();
+
+      await AsyncStorage.setItem("tree", JSON.stringify(serializedTree));
+    } catch (error) {
+      console.error("Error while saving to AsyncStorage", error);
+    }
+  };
+
   const value = {
     state,
     setState,
@@ -42,6 +60,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     setTree,
     updateTrigger,
     setUpdateTrigger,
+    saveDataAsync,
   };
 
   return (

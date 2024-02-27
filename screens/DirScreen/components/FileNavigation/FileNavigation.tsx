@@ -16,18 +16,29 @@ export default function FileNavigation() {
   const { tree, updateTrigger } = useStateProvider();
   const [dataArray, setDataArray] = useState<LineProps[] | null>(null);
 
+  console.log("TREE IN NAV");
+  console.log(tree.currentNode.childNodes);
+
   useEffect(() => {
-    console.log("CURRRRR " + tree.currentNode.name);
+    let folders: LineProps[];
+    try {
+      folders = tree.currentNode.childNodes.map((node) => ({
+        folder: true,
+        name: node.name,
+      }));
+    } catch (error) {
+      console.error("Error in folders arr");
+    }
 
-    const folders: LineProps[] = tree.currentNode.childNodes.map((node) => ({
-      folder: true,
-      name: node.name,
-    }));
-
-    const notes: LineProps[] = tree.currentNode.values.map((note) => ({
-      folder: false,
-      name: note.name,
-    }));
+    let notes;
+    try {
+      notes = tree.currentNode.values.map((note) => ({
+        folder: false,
+        name: note.name,
+      }));
+    } catch (error) {
+      console.error("Error in notes arr");
+    }
 
     const concatinatedData: LineProps[] = folders.concat(notes);
     setDataArray(concatinatedData);

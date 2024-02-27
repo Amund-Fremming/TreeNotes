@@ -12,28 +12,31 @@ export default function Footer() {
   const [fileDialogVisible, setFileDialogVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  const { tree, updateTrigger, setUpdateTrigger } = useStateProvider();
+  const { tree, updateTrigger, setUpdateTrigger, saveDataAsync } =
+    useStateProvider();
 
   const handleAddFolder = () => {
+    setFolderDialogVisible(false);
     if (!folderDialogVisible) return; // For disabling doble creation of files
 
-    setFolderDialogVisible(false);
     const treeNode: TreeNode = new TreeNode(inputValue);
     tree.addTreeNodeToCurrentNode(treeNode);
+
     setUpdateTrigger(!updateTrigger);
     setInputValue("");
-
-    console.log(treeNode.childNodes);
+    saveDataAsync();
   };
 
   const handleAddFile = () => {
+    setFileDialogVisible(false);
     if (!fileDialogVisible) return; // For disabling doble creation of files
 
-    setFileDialogVisible(false);
     const note: Note = new Note(inputValue);
     tree.addNoteToCurrentNode(note);
+
     setUpdateTrigger(!updateTrigger);
     setInputValue("");
+    saveDataAsync();
   };
 
   const handleCancel = () => {

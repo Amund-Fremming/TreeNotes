@@ -10,6 +10,8 @@ export const styles = StyleSheet.create({
     paddingTop: verticalScale(50),
     flexDirection: "column",
     gap: horizontalScale(18),
+    width: "90%",
+    alignItems: "center",
   },
 
   header: {
@@ -26,6 +28,8 @@ export const styles = StyleSheet.create({
 
   terminalWrapper: {
     flexDirection: "row",
+    flexWrap: "wrap",
+    width: "80%",
   },
 
   subHeaderUser: {

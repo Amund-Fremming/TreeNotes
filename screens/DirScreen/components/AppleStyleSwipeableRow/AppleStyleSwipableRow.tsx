@@ -23,7 +23,6 @@ const AppleStyleSwipableRow = ({
   const { tree, updateTrigger, setUpdateTrigger } = useStateProvider();
 
   const handleDelete = () => {
-    console.log(`Deleted ${name}!`);
     if (folder) {
       tree.removeTreeNodeFromCurrentNode(name);
     }
