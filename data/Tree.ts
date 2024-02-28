@@ -22,6 +22,14 @@ export class Tree {
     this.currentNode.values.push(note);
   }
 
+  updateNoteToCurrentNode(name: string, content: string) {
+    const noteIndex = this.currentNode.values.findIndex(
+      (note) => note.name === name
+    );
+
+    this.currentNode.values[noteIndex].content = content;
+  }
+
   removeTreeNodeFromCurrentNode(name: string) {
     this.currentNode.childNodes = this.currentNode.childNodes.filter(
       (node) => node.name !== name

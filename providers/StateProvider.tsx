@@ -19,6 +19,8 @@ interface IStateContext {
   saveDataAsync: () => void;
   currentNote: string;
   setCurrentNote: Dispatch<SetStateAction<string>>;
+  markdownText: string;
+  setMarkdownText: Dispatch<SetStateAction<string>>;
 }
 
 const defaultContextValue: IStateContext = {
@@ -31,6 +33,8 @@ const defaultContextValue: IStateContext = {
   saveDataAsync: () => {},
   currentNote: "none",
   setCurrentNote: () => {},
+  markdownText: "",
+  setMarkdownText: () => {},
 };
 
 const StateContext = createContext<IStateContext>(defaultContextValue);
@@ -42,6 +46,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [tree, setTree] = useState<Tree | null>(null);
   const [updateTrigger, setUpdateTrigger] = useState<boolean>(true);
   const [currentNote, setCurrentNote] = useState<string>("none");
+  const [markdownText, setMarkdownText] = useState<string>("");
 
   const saveDataAsync = async () => {
     // TODO - Only save data that is not already saved
@@ -68,6 +73,8 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     saveDataAsync,
     currentNote,
     setCurrentNote,
+    markdownText,
+    setMarkdownText,
   };
 
   return (
