@@ -1,10 +1,17 @@
 # TreeNotes
 
-## Bugs
+## Kort om appen
+- Enkel notat app som er basert på fil systemet file explorer/finder
+- Mulighet for å neste mapper, og opprette notater for bedre gruppering og kategorisering av notater
+- Bruker en implementert tre-datastruktur for å håndtere lagring av data
 
-- Async storage fungerer ikke å lagre
+## Hva har jeg lært
+- Mer om hvordan serialization og dezerialization fungerer, spesielt med komplekse datatyper
+- Hvordan bruke og implementere tre-datastrukturen for data lagring
 
-## Implementeres
+<hr>
+
+## Implementere
 
 - Ikke samme navn på notes!
 - En side for Note
