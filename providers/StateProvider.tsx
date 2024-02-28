@@ -17,6 +17,8 @@ interface IStateContext {
   updateTrigger: boolean;
   setUpdateTrigger: Dispatch<SetStateAction<boolean>>;
   saveDataAsync: () => void;
+  currentNote: string;
+  setCurrentNote: Dispatch<SetStateAction<string>>;
 }
 
 const defaultContextValue: IStateContext = {
@@ -27,6 +29,8 @@ const defaultContextValue: IStateContext = {
   updateTrigger: true,
   setUpdateTrigger: () => {},
   saveDataAsync: () => {},
+  currentNote: "none",
+  setCurrentNote: () => {},
 };
 
 const StateContext = createContext<IStateContext>(defaultContextValue);
@@ -37,6 +41,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<string>("DIR");
   const [tree, setTree] = useState<Tree | null>(null);
   const [updateTrigger, setUpdateTrigger] = useState<boolean>(true);
+  const [currentNote, setCurrentNote] = useState<string>("none");
 
   const saveDataAsync = async () => {
     // TODO - Only save data that is not already saved
@@ -61,6 +66,8 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     updateTrigger,
     setUpdateTrigger,
     saveDataAsync,
+    currentNote,
+    setCurrentNote,
   };
 
   return (

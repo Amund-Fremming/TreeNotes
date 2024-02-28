@@ -27,7 +27,7 @@ export default function FileNavigation() {
       console.error("Error in folders arr");
     }
 
-    let notes;
+    let notes: LineProps[];
     try {
       notes = tree.currentNode.values.map((note) => ({
         folder: false,

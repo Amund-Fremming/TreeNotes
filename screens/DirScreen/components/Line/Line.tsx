@@ -5,7 +5,7 @@ import { useStateProvider } from "../../../../providers/StateProvider";
 import { LineProps } from "../FileNavigation/FileNavigation";
 
 export default function Line({ empty, folder, name, light }: LineProps) {
-  const { setState, tree, updateTrigger, setUpdateTrigger } =
+  const { setState, tree, updateTrigger, setUpdateTrigger, setCurrentNote } =
     useStateProvider();
 
   const handleDirPressed = () => {
@@ -16,6 +16,7 @@ export default function Line({ empty, folder, name, light }: LineProps) {
 
   const handleFilePressed = () => {
     // TODO
+    setCurrentNote(name);
     setState("FILE");
   };
 
