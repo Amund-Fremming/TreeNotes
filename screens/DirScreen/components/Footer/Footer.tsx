@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Alert } from "react-native";
 import { styles } from "./FooterStyles";
 import Feather from "react-native-vector-icons/Feather";
 import { useStateProvider } from "../../../../providers/StateProvider";
@@ -16,6 +16,25 @@ export default function Footer() {
     useStateProvider();
 
   const handleAddFolder = () => {
+    if (tree.currentNode.childNodes.length > 18) {
+      Alert.alert("To many files!", "The maximum capasity for files are 5!");
+      return;
+    }
+
+    if (inputValue.length > 18) {
+      Alert.alert("Invalid input", "Name too long!");
+      return;
+    }
+
+    const listWithCurrentDirNames = tree.currentNode.childNodes.filter(
+      (node) => node.name === inputValue
+    );
+
+    if (listWithCurrentDirNames.length !== 0) {
+      Alert.alert("Name Conflict", "The name you inserted already exists!");
+      return;
+    }
+
     setFolderDialogVisible(false);
     if (!folderDialogVisible) return; // For disabling doble creation of files
 
@@ -28,6 +47,24 @@ export default function Footer() {
   };
 
   const handleAddFile = () => {
+    if (tree.currentNode.values.length > 4) {
+      Alert.alert("To many files!", "The maximum capasity for files are 5!");
+      return;
+    }
+
+    if (inputValue.length > 18) {
+      Alert.alert("Invalid input", "Name too long!");
+      return;
+    }
+
+    const listWithCurrentFileNames = tree.currentNode.values.filter(
+      (node) => node.name === inputValue
+    );
+    if (listWithCurrentFileNames.length !== 0) {
+      Alert.alert("Name Conflict", "The name you inserted already exists!");
+      return;
+    }
+
     setFileDialogVisible(false);
     if (!fileDialogVisible) return; // For disabling doble creation of files
 

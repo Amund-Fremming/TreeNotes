@@ -20,9 +20,12 @@ const AppleStyleSwipableRow = ({
   name,
   index,
 }: AppleStyleSwipableRowProps) => {
-  const { tree, updateTrigger, setUpdateTrigger } = useStateProvider();
+  const { tree, updateTrigger, setUpdateTrigger, saveDataAsync } =
+    useStateProvider();
 
   const handleDelete = () => {
+    saveDataAsync();
+
     if (folder) {
       tree.removeTreeNodeFromCurrentNode(name);
     }
