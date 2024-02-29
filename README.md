@@ -23,5 +23,5 @@
 
 ## Implementere
 
-- Begrensning for hvor mange ganger man kan neste notater!
+- Begrensning for hvor dypt man kan neste notater!
 - Fiks for formatering i notater?
