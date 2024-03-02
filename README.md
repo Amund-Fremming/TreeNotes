@@ -21,7 +21,8 @@
 - Søke
 - Mulig å rename mapper og filer
 
-## Implementere
+## Bugs
 
-- Begrensning for hvor dypt man kan neste notater!
-- Fiks for formatering i notater?
+- Må laste inn data første gang man åpner appen. Nå kan man kille appen og notater vises ikke før man trykker tilbake
+- Kan neste notater evig
+- Trykker man tilbake fra notes, flasher det hvitt. Kan være så enkelt som å endre Bg til sort på alt.
