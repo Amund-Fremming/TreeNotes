@@ -2,7 +2,7 @@
   "expo": {
     "name": "TreeNotes",
     "slug": "TreeNotes",
-    "version": "1.0.0",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.webp",
     "userInterfaceStyle": "light",
@@ -10,17 +10,11 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.amundfremming.TreeNotes"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#000000"
-      }
+      "bundleIdentifier": "com.amundfremming.TreeNotes",
+      "buildNumber": "2"
     },
     "web": {
       "favicon": "./assets/favicon.png"

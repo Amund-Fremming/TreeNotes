@@ -7,7 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Restore } from "./data/Restore";
 
 export default function Router() {
-  const { state, setTree } = useStateProvider();
+  const { state, setTree, updateTrigger, setUpdateTrigger } = useStateProvider();
 
   useEffect(() => {
     loadDataFromLocalStorage();
@@ -20,6 +20,7 @@ export default function Router() {
       const parsedData = JSON.parse(jsonRaw);
       const restoredTree = Restore.restoreTreeFromObject(parsedData) as Tree;
       setTree(restoredTree);
+      setUpdateTrigger(!updateTrigger);
     }
   };
 

@@ -8,6 +8,7 @@ export default function FileScreen() {
   return (
     <View style={styles.container}>
       <Header />
+     
       <NoteSection />
       <Footer />
     </View>
