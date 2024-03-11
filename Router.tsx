@@ -5,6 +5,8 @@ import FileScreen from "./screens/FileScreen/FileScreen";
 import { Tree } from "./data/Tree";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Restore } from "./data/Restore";
+import { styles } from "./RouterStyles";
+import { View } from "react-native";
 
 export default function Router() {
   const { state, setTree, updateTrigger, setUpdateTrigger } = useStateProvider();
@@ -29,5 +31,9 @@ export default function Router() {
     setTree(tree);
   };
 
-  return state === "DIR" ? <DirScreen /> : <FileScreen />;
+  return(
+      <View style={styles.bg}>
+      {state === "DIR" ? <DirScreen /> : <FileScreen />}
+      </View>
+  );
 }
