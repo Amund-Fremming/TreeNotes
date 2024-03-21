@@ -2,7 +2,7 @@
   "expo": {
     "name": "TreeNotes",
     "slug": "TreeNotes",
-    "version": "1.0.4",
+    "version": "1.0.6",
     "orientation": "portrait",
     "icon": "./assets/icon.webp",
     "userInterfaceStyle": "light",
@@ -14,7 +14,17 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.amundfremming.TreeNotes",
-      "buildNumber": "2"
+      "buildNumber": "4",
+      "infoPlist": {
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPICategoryDiskSpace": "TreeNotes uses disk space information to ensure there is sufficient storage available for saving your notes securely and efficiently, enhancing your note-taking experience.",
+            "NSPrivacyAccessedAPICategoryFileTimestamp": "TreeNotes accesses file timestamp information to organize your notes chronologically, helping you easily find and manage your notes based on when they were created or last modified.",
+            "NSPrivacyAccessedAPICategorySystemBootTime": "TreeNotes references system boot time to provide reliable note-taking functionality, ensuring that notes are accurately timestamped, even across system restarts.",
+            "NSPrivacyAccessedAPICategoryUserDefaults": "TreeNotes uses UserDefaults to store your preferences and settings, including theme selection and default note organization options, to personalize your app experience."
+          }
+        ]
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
